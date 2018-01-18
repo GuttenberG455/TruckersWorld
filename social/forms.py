@@ -68,11 +68,11 @@ class RegistrationForm(UserCreationForm):
                                                  user_company_name=company_pers)
                     user_personal.save()
             else:
+                print("OKAY?")
                 user.save()
                 user_personal = UserPersonal(user_django_id=user.id, user_group_id_id=group_pers,
                                              user_name=user.first_name,
-                                             user_surname=user.last_name, user_gender=gender_pers,
-                                             user_dateofbirth=date_of_birth_pers, user_phone_number=phone_pers,
+                                             user_surname=user.last_name, user_phone_number=phone_pers,
                                              user_company_name=company_pers)
                 user_personal.save()
 

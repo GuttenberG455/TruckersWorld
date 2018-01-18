@@ -20,12 +20,16 @@ def media(request):
 
 
 def reg_form(request):
+    print("reg_form")
     if request.method == 'POST':
+        print("postpost")
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            print("savesave")
             form.save()
             return redirect("entrance")
     else:
+        print("elseelse")
         form = RegistrationForm()
         return render(request, "social/registration_form.html", locals())
 
