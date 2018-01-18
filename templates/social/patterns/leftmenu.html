@@ -1,0 +1,32 @@
+{% if request.user.id is None %}
+    <div class="container-fluid w-100 border"
+         style="margin: 0px 0px 2px;background-color: #f8f9fa;padding-left: 5px; padding-right: 5px">
+        <p style="font-weight: bold; font-size: 10pt; margin-bottom: 0px">Вы не авторизированы</p>
+        <a style="font-weight: bold; font-size: 9pt;" href="{% url "entrance" %}">Нажмите здесь, чтобы
+            авторизироваться</a>
+    </div>
+{% else %}
+    <div class="container-fluid w-100 border"
+         style="margin: 0px 0px 2px;background-color: #f8f9fa;padding-left: 5px; padding-right: 5px">
+        <p style="font-weight: bold; font-size: 10pt; margin-bottom: 0px">Здравствуйте, {{ request.user }}</p>
+    </div>
+{% endif %}
+{% if request.user.id is not None %}
+    <div class="btn-group-vertical w-100 border" style="padding: 0px; vertical-align: text-top">
+        <button type="button" class="btn btn-light" onclick="location.href='{% url "personal_page" request.user.id %}'"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Личная страница
+        </button>
+        <button type="button" class="btn btn-light" onclick="location.href='{% url "personal_trucks" request.user.id %}'"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Грузовики
+        </button>
+        <button type="button" class="btn btn-light"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Контракты
+        </button>
+        <button type="button" class="btn btn-light" onclick="location.href='{% url "social_feed" %}'"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Новости
+        </button>
+        <button type="button" class="btn btn-light" onclick="location.href='{% url "video_feed" %}'"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Видеозаписи
+        </button>
+    </div>
+{% endif %}

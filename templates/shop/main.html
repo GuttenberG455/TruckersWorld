@@ -1,0 +1,60 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Магазин{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid border border-info" style="cursor: pointer"
+         onclick="location.href ='{% url "add_new_product" %}'">
+        <div class="text-info" style="text-align: center">
+            Нажмите здесь, чтобы добавить новый товар
+        </div>
+    </div>
+{#    <div class="container-fluid">#}
+{#        <h1>Форма поиска</h1>#}
+{#        <form>#}
+{#            <div class="input-group">#}
+{#                <label for="NNN">С </label>#}
+{#                <input type="number" id="NNN" onchange="get_year()">#}
+{#                <label for="inp_year_of_prod2">До </label>#}
+{#                <input type="number" id="inp_year_of_prod2" onchange="get_year_of_prod2()">#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+    <hr>
+    <h2 id="demo"></h2>
+    <h2 id="demo2"></h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="col-9">
+                {% for prod in prod_list %}
+                    <div class="row border" style="max-height: 250px">
+                        <div class="col-4">
+                            <img src="{{ prod.product_truck.truck_image }}" class="col-4"
+                                 style="max-width: 400px; max-height:200px; margin-top: 3px; margin-bottom: 3px;">
+                        </div>
+                        <div class="col-4" style="padding-left: 2px; padding-right: 2px;">
+                            <p style="font-weight:bold; margin-top: 10px; font-size: 14pt; margin-bottom: 3px">{{ prod.product_truck }}</p>
+                            <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px"> {{ prod.product_truck.truck_type }} </p>
+                            <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px">Двигатель {{ prod.product_truck.truck_engine }} {{ prod.product_truck.truck_engine_vol }} л {{ prod.product_truck.truck_engine_power }} л.с</p>
+                            <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px">Колесная формула {{ prod.product_truck.truck_wheel_formula }}</p>
+                            <p style="font-size: 14pt; margin-top: 10%; color: darkslategrey;">Место продажи: {{ prod.product_address }}</p>
+                        </div>
+                        <div class="col-2">
+                            <p style="margin-top: 10px; font-size: 15pt">{{ prod.product_truck.truck_mileage }} км</p>
+                        </div>
+                        <div class="col-2">
+                            <p style="margin-top: 10px; font-size: 15pt; font-weight: bold">{{ prod.product_price }} руб.</p>
+                            <input type="button" class="button btn-primary w-100" value="Узнать больше" onclick="location.href='{% url "show_product" prod.product_id %}'">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-2">
+                <img class="img"
+                     src="https://olxkz-ringkz01.akamaized.net/images_slandokz/206017362_1_261x203_shirokoformatnaya-pechat-banner-orakal-beklit-naruzhnaya-reklama-almaty.jpg">
+            </div>
+        </div>
+    </div>
+{% endblock content %}

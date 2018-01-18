@@ -1,0 +1,134 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Добавление нового груза{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3>Добавление нового груза</h3>
+    </div>
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td colspan="2">
+                        <h5>Введите информацию о грузе</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Название груза</label>
+                    </td>
+                    <td class="w-75">
+                        {{ form.freight_description }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Описание груза</label>
+                    </td>
+                    <td class="w-75">
+                        {{ form.freight_comment }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Категория груза</label>
+                    </td>
+                    <td class="w-75">
+{#                        <select class="form-control w-100">#}
+{#                            <option>----</option>#}
+{#                            <option>Продукты</option>#}
+{#                            <option>Строительные материалы</option>#}
+{#                            <option>Стекло</option>#}
+{#                            <option>Оборудование</option>#}
+{#                            <option></option>#}
+{#                        </select>#}
+                        {{ form.freight_category }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Длина груза</label>
+                    </td>
+                    <td>
+{#                        <input type="number" class="w-75"> м#}
+                        {{ form.freight_length }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Ширина груза</label>
+                    </td>
+                    <td>
+{#                        <input type="number" class="w-75"> м#}
+                        {{ form.freight_width }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Высота груза</label>
+                    </td>
+                    <td>
+{#                        <input type="number" class="w-75"> м#}
+                        {{ form.freight_height }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Масса груза</label>
+                    </td>
+                    <td>
+{#                        <input type="number" class="w-75"> кг#}
+                        {{ form.freight_weight }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Дата получения груза</label>
+                    </td>
+                    <td>
+{#                        <input type="date" class="w-75">#}
+                        {{ form.freight_first_date }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Крайняя дата доставки</label>
+                    </td>
+                    <td>
+{#                        <input type="date" class="w-75">#}
+                        {{ form.freight_latest_date }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Адрес получения груза</label>
+                    </td>
+                    <td>
+{#                        <input class="w-75" id="freight_input_address1" onchange="add_freight_address1()">#}
+{#                        <span class="ymaps-geolink" id="freight_ya_address1"></span>#}
+                        {{ form.freight_address_start }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Адрес доставки груза</label>
+                    </td>
+                    <td>
+{#                        <input class="w-75" id="freight_input_address2" onchange="add_freight_address2()">#}
+{#                        <span class="ymaps-geolink" id="freight_ya_address2"></span>#}
+                        {{ form.freight_address_finish }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="button btn-primary" value="Добавить">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

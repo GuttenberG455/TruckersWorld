@@ -1,0 +1,60 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Лента новостей{% endblock title %}
+
+{% block social_content %}
+    <div class="container border border-info" style="cursor: pointer" onclick="location.href ='{% url "add_new_post" %}'">
+        <div class="text-info" style="text-align: center">
+            Нажмите здесь, чтобы добавить новый пост
+        </div>
+    </div>
+    {% for post in post_list %}
+        <div class="container border" style="margin-top: 7px">
+            <h1>{{ post.title_post }}</h1>
+            <hr>
+            <p>{{ post.text_post }}</p>
+            {% if post.image1_post != "" %}
+                <div id="carusel{{ post.id_post }}" class="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="#carusel{{ post.id_post }}" data-slide="next">
+                                <img src="{{ post.image1_post }}" style="max-height: 400px; max-width: 600px">
+                            </a>
+                        </div>
+                        {% if post.image2_post != "" %}
+                            <div class="carousel-item">
+                                <a href="#carusel{{ post.id_post }}" data-slide="next">
+                                    <img src="{{ post.image2_post }}" style="max-height: 400px; max-width: 600px">
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if post.image3_post != "" %}
+                            <div class="carousel-item ">
+                                <a href="#carusel{{ post.id_post }}" data-slide="next">
+                                    <img src="{{ post.image3_post }}" style="max-height: 400px; max-width: 600px">
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if post.image4_post != "" %}
+                            <div class="carousel-item ">
+                                <a href="#carusel{{ post.id_post }}" data-slide="next">
+                                    <img src="{{ post.image4_post }}" style="max-height: 400px; max-width: 600px">
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if post.image5_post != "" %}
+                            <div class="carousel-item ">
+                                <a href="#carusel{{ post.id_post }}" data-slide="next">
+                                    <img src="{{ post.image5_post }}" style="max-height: 400px; max-width: 600px">
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            <hr style="margin-top: 8px; margin-bottom: 8px">
+            <p style="font-size: 12px; color: darkslategrey">Автор: {{ post.author_post.str_user }}</p>
+        </div>
+    {% endfor %}
+{% endblock social_content %}
+

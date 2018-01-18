@@ -1,0 +1,96 @@
+{% extends "patterns/base.html" %}
+{% load static %}
+{% block title %}Добро пожаловать{% endblock title %}
+
+{% block content %}
+    {#    Carusel#}
+    <div class="container" style="margin-bottom: 20px">
+        <div id="CrslEntrance" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#CrslEntrance" data-slide-to="0" class="active"></li>
+                <li data-target="#CrslEntrance" data-slide-to="1"></li>
+                <li data-target="#CrslEntrance" data-slide-to="2"></li>
+                <li data-target="#CrslEntrance" data-slide-to="3"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static "pictures/CrslEntrance0.jpg" %}" alt="Trucks" width="100%" height="100%">
+                    <div class="carousel-caption">
+                        <h3 style="text-shadow:3px 3px 3px black; font-weight: 900; font-size: 32pt">Welcome to TruckersWorld</h3>
+                        <p style="text-shadow:1px 1px 1px black;">Best truckers website</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static "pictures/CrslEntrance1.jpg" %}" alt="Trucks" width="100%" height="100%">
+                    <div class="carousel-caption">
+                        <h3 style="text-shadow:3px 3px 3px black; font-weight: 900;">Social</h3>
+                        <p style="text-shadow:1px 1px 1px black;">Your personal page</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static "pictures/CrslEntrance2.jpg" %}" alt="Trucks" width="100%" width="100%">
+                    <div class="carousel-caption">
+                        <h3 style="text-shadow:3px 3px 3px black; font-weight: 900;">Freights</h3>
+                        <p style="text-shadow:1px 1px 1px black;">Find your freight</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static "pictures/CrslEntrance3.jpg" %}" alt="Trucks" width="100%" width="100%">
+                    <div class="carousel-caption">
+                        <h3 style="text-shadow:3px 3px 3px black; font-weight: 900;">Shop</h3>
+                        <p style="text-shadow:1px 1px 1px black;">Buy new trucks</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#CrslEntrance" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#CrslEntrance" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td class="border" colspan="2">
+                        <h5 style="padding-left: 10px">Введите имя пользователя и пароль в поля снизу</h5>
+                    </td>
+                </tr>
+                <tr class="border">
+                    <td class="border w-25">Ваше имя пользователя:</td>
+                    <td>
+{#                        <input type="email" class="w-50" name="Username">#}
+                        {{ form.username }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border w-25"><label>Введите пароль:</label></td>
+                    <td>
+{#                        <input type="password" class="w-50" id="password1" name="Password">#}
+                        {{ form.password }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border" colspan="2">
+                        <input type="submit" value="Войти" class="button btn-primary">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border" colspan="2">
+                        <div class="text-dark">
+                            Нет аккаунта на сайте Truckers World?
+                        </div>
+                        <div class="text-info">
+                            <a class="alert-link" href="{% url "registration_form" %}">Нажмите здесь, чтобы
+                                зарегистрироваться</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+{% endblock content %}

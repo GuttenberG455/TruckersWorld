@@ -1,0 +1,133 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Добавить грузовик{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3>Добавление нового грузовика </h3>
+    </div>
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td colspan="2">
+                        <h5>Введите информацию</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Марка</label>
+                    </td>
+                    <td class="w-75">
+                        {{ form.truck_brend }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Модель</label>
+                    </td>
+                    <td>
+                        {{ form.truck_model }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Год выпуска</label>
+                    </td>
+                    <td>
+                        {{ form.truck_release_year }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Тип грузовика</label>
+                    </td>
+                    <td>
+                        {{ form.truck_type }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Пробег</label>
+                    </td>
+                    <td>
+                        {{ form.truck_mileage }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Гос. номер</label>
+                    </td>
+                    <td>
+                        {{ form.truck_gosnum }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>VIN номер</label>
+                    </td>
+                    <td>
+                        {{ form.truck_vinnum }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Название двигателя</label>
+                    </td>
+                    <td>
+                        {{ form.truck_engine }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Объем двигателя</label>
+                    </td>
+                    <td>
+                        {{ form.truck_engine_vol }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Мощность двигателя</label>
+                    </td>
+                    <td>
+                        {{ form.truck_engine_power }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Колесная формула</label>
+                    </td>
+                    <td>
+                        {{ form.truck_wheel_formula }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Изображение</label>
+                    </td>
+                    <td>
+                        {{ form.truck_image }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Владелец</label>
+                    </td>
+                    <td>
+                        {{ form.truck_owner }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="button btn-primary" value="Добавить грузовик">
+                        <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

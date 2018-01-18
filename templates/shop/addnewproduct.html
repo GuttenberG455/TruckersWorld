@@ -1,0 +1,150 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Добавление нового товара{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3>Добавление нового товара</h3>
+    </div>
+    <div class="container">
+        <form>
+            <table class="table table-light border">
+                <tr>
+                    <td colspan="2">
+                        <h5>Введите информацию о товаре</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Марка грузовика груза</label>
+                    </td>
+                    <td class="w-75">
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Модель грузовика</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Год выпуска</label>
+                    </td>
+                    <td>
+                        <input type="number" maxlength="4" class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Тип грузового автомобиля</label>
+                    </td>
+                    <td>
+                        <select class="form-control w-75">
+                            <option>----</option>
+                            <option>Седельный тягач</option>
+                            <option>Самосвал</option>
+                            <option>Бортовой</option>
+                            <option>Автоцистерна</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Пробег</label>
+                    </td>
+                    <td>
+                        <input type="number" class="w-75"> км
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Государственный номер</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>VIN автомобиля</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Объем двигателя</label>
+                    </td>
+                    <td>
+                        <input type="number" class="w-75"> л
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Название двигателя</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Колесная формула</label>
+                    </td>
+                    <td>
+                        <select class="form-control w-75">
+                            <option>----</option>
+                            <option>4x2</option>
+                            <option>4x4</option>
+                            <option>6x4</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Изображение грузовика</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Адрес продажи</label>
+                    </td>
+                    <td>
+                        <input class="w-75">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Описание грузовика</label>
+                    </td>
+                    <td>
+                        <textarea class="w-75" maxlength="300"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight: bold;">Цена</label>
+                    </td>
+                    <td>
+                        <input type="number" class="w-75"> руб.
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" class="button btn-primary" value="Добавить">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

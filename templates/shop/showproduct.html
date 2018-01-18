@@ -1,0 +1,118 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Товар{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3 style="text-align: center">Информация о контракте №{{ prod.product_id }}</h3>
+    </div>
+    <div class="container">
+        <table class="table table-light border">
+            <tr>
+                <td class="w-25 border">
+                    <p style="font-weight: bold">Название грузовика</p>
+                </td>
+                <td class="w-75">
+                    <p style="font-weight: bold">{{ prod.product_truck }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="w-25 border">
+                    <p style="font-weight: bold">Изображение грузовика</p>
+                </td>
+                <td class="w-75">
+                    <img src="{{ prod.product_truck.truck_image }}" style="width: 60%; max-height: 400px">
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Описание грузовика</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_description }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Тип автомобиля</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_type }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Пробег</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_mileage }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Двигатель</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_engine }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Объем двигателя</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_engine_vol }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Мощность двигателя</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_engine_power }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Колесная формула</p>
+                </td>
+                <td>
+                    <p>{{ prod.product_truck.truck_wheel_formula }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border" colspan="2">
+                    <p style="font-weight: bold; font-size: 16pt; margin-bottom: 0px">Контактная информация</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold" class="border">Адрес продавца</td>
+                <td>{{ prod.product_address }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold" class="border">Продавец</td>
+                <td>{{ prod.product_truck.truck_owner.str_user }}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold" class="border">Телефон продавца</td>
+                {% if prod.product_truck.truck_owner.user_phone_number %}
+                <td>{{ prod.product_truck.truck_owner.user_phone_number }}</td>
+                {% else %}
+                    <td>Телефон не указан</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td class="border" style="font-weight: bold; font-size: 16pt">Цена</td>
+                <td style="font-size: 15pt">{{ prod.product_price }} руб.</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="button btn-primary" value="Откликнуться на предложение">
+                    <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+{% endblock content %}

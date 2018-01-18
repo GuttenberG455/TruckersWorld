@@ -1,0 +1,61 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Добавление нового видео{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3>Добавление нового видео </h3>
+    </div>
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td colspan="2">
+                        <h5>Введите информацию</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Ссылка на видео</label>
+                    </td>
+                    <td class="w-75">
+                        {{ form.video_link }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Заголовок видео</label>
+                    </td>
+                    <td>
+                        {{ form.video_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Описание видео</label>
+                    </td>
+                    <td>
+                        {{ form.video_description }}
+                    </td>
+                </tr>
+{#                <tr>#}
+{#                    <td>#}
+{#                        <label>Кто загрузил видео (временный вариант)</label>#}
+{#                    </td>#}
+{#                    <td>#}
+{#                        {{ form.video_author }}#}
+{#                    </td>#}
+{#                </tr>#}
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="button btn-primary" value="Опубликовать видео">
+                        <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Список грузовиков{% endblock title %}
+
+{% block social_content %}
+    <div class="container border border-info" style="cursor: pointer" onclick="location.href ='{% url "add_truck" %}'">
+        <div class="text-info" style="text-align: center">
+            Нажмите здесь, чтобы добавить новый грузовик
+        </div>
+    </div>
+    {% for truck in trucks_list %}
+        <div class="container border" style="margin-bottom: 5px; margin-top: 5px;">
+        <div class="row">
+            <div class="col-5">
+                <img src="{{ truck.truck_image }}" class="col-4"
+                     style="max-width: 500px; max-height:300px; margin-top: 3px; margin-bottom: 3px;">
+            </div>
+            <div class="col-7" style="padding-left: 2px; padding-right: 2px;">
+                <p style="font-weight:bold; margin-top: 10px; font-size: 14pt; margin-bottom: 3px">{{ truck }}</p>
+                <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px"> {{ truck.truck_type }} </p>
+                <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px">
+                    Двигатель {{ truck.truck_engine }} {{ truck.truck_engine_vol }}
+                    л {{ truck.truck_engine_power }} л.с</p>
+                <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px">Колесная
+                    формула {{ truck.truck_wheel_formula }}</p>
+                <p style="margin-top: 10px; font-size: 15pt">{{ truck.truck_mileage }} км</p>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+{% endblock social_content %}
+

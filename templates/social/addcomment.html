@@ -1,0 +1,24 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Добавить комментарий{% endblock title %}
+
+{% block social_content %}
+    <form method="POST">
+    {% csrf_token %}
+        <table class="table table-light border">
+            <tr>
+                <td style="font-weight: bold; font-size: 14pt">Добавление комментария</td>
+            </tr>
+            <tr>
+                <td>{{ form.commentary_text }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" class="button btn-primary" value="Добавить комментарий">
+                    <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock social_content %}
+

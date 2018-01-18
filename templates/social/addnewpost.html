@@ -1,0 +1,118 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Добавление нового поста{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3>Добавление нового поста </h3>
+    </div>
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td colspan="2">
+                        <h5>Введите информацию</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="w-25">
+                        <label>Заголовок новости</label>
+                    </td>
+                    <td class="w-75">
+                        {{ form.title_post }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Текст новости</label>
+                    </td>
+                    <td>
+                        {{ form.text_post }}
+                    </td>
+                </tr>
+                <tr id="add_post_img_btn1">
+                    <td colspan="2">
+                        <input type="button" class="button btn-info" value="Добавить картинку" onclick="add_post_inp_img1()">
+                    </td>
+                </tr>
+                <tr id="add_post_img_inp1" style="display: none">
+                    <td>
+                        <label>Ссылка на картинку №1</label>
+                    </td>
+                    <td>
+                        {{ form.image1_post }}
+                    </td>
+                </tr>
+                <tr id="add_post_img_btn2" style="display: none">
+                    <td colspan="2">
+                        <input type="button" class="button btn-info" value="Добавить картинку" onclick="add_post_inp_img2()">
+                    </td>
+                </tr>
+                <tr id="add_post_img_inp2" style="display: none">
+                    <td>
+                        <label>Ссылка на картинку №2</label>
+                    </td>
+                    <td>
+                        {{ form.image2_post }}
+                    </td>
+                </tr>
+                <tr id="add_post_img_btn3" style="display: none">
+                    <td colspan="2">
+                        <input type="button" class="button btn-info" value="Добавить картинку" onclick="add_post_inp_img3()">
+                    </td>
+                </tr>
+                <tr id="add_post_img_inp3" style="display: none">
+                    <td>
+                        <label>Ссылка на картинку №3</label>
+                    </td>
+                    <td>
+                        {{ form.image3_post }}
+                    </td>
+                </tr>
+                <tr id="add_post_img_btn4" style="display: none">
+                    <td colspan="2">
+                        <input type="button" class="button btn-info" value="Добавить картинку" onclick="add_post_inp_img4()">
+                    </td>
+                </tr>
+                <tr id="add_post_img_inp4" style="display: none">
+                    <td>
+                        <label>Ссылка на картинку №4</label>
+                    </td>
+                    <td>
+                        {{ form.image4_post }}
+                    </td>
+                </tr>
+                <tr id="add_post_img_btn5" style="display: none">
+                    <td colspan="2">
+                        <input type="button" class="button btn-info" value="Добавить картинку" onclick="add_post_inp_img5()">
+                    </td>
+                </tr>
+                <tr id="add_post_img_inp5" style="display: none">
+                    <td>
+                        <label>Ссылка на картинку №5</label>
+                    </td>
+                    <td>
+                        {{ form.image5_post }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Кто автор поста, временный вариант</label>
+                    </td>
+                    <td>
+                        {{ form.author_post }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="button btn-primary" value="Опубликовать пост">
+                        <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

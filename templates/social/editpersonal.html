@@ -1,0 +1,70 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Редактировать страницу{% endblock title %}
+
+{% block social_content %}
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td class="border" colspan="2">
+                        <h5 style="padding-left: 10px">Персональная информация</h5>
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Имя</td>
+                    <td>
+                        {{ form.user_name }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Фамилия</td>
+                    <td>
+                        {{ form.user_surname }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border">Ваш пол</td>
+                    <td>
+                        {{ form.user_gender }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Дата рождения</td>
+                    <td class="border w-50">
+                        {{ form.user_dateofbirth }}
+                    </td>
+                </tr>
+                <tr class="company_tag">
+                    <td class="border w-25">Название компании</td>
+                    <td class="border w-50">
+                        {{ form.user_company_name }}
+                    </td>
+                </tr>
+                <tr id="phone_tag">
+                    <td class="border w-25"><label>Номер телефона</label></td>
+                    <td class="border w-50">
+                        {{ form.user_phone_number }}
+                    </td>
+                </tr>
+                <tr id="phone_tag">
+                    <td class="border w-25"><label>Изображение пользователя</label></td>
+                    <td class="border w-50">
+                        {{ form.user_image }}
+                    </td>
+                </tr>
+                <tr id="reg_submit_tag">
+                    <td class="border" colspan="2">
+                        <input type="submit" class="button btn-primary" value="Редактировать">
+                        <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock social_content %}
+

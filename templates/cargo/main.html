@@ -1,0 +1,60 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Поиск груза{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid border border-info" style="cursor: pointer" onclick="location.href ='{% url "add_new_freight" %}'">
+        <div class="text-info" style="text-align: center">
+            Нажмите здесь, чтобы добавить новый груз
+        </div>
+    </div>
+{#    <div class="container-fluid">#}
+{#        <form>#}
+{#            <h1>Форма поиска</h1>#}
+{#            <div class="input-group">#}
+{#                <label>Выберите тип груза </label>#}
+{#                <select class="form-control">#}
+{#                    <option>----</option>#}
+{#                    <option>Продукты</option>#}
+{#                    <option>Строительные материалы</option>#}
+{#                    <option>Стекло</option>#}
+{#                    <option>Оборудование</option>#}
+{#                    <option></option>#}
+{#                </select>#}
+{#                <label> Дата выдачи заказа </label>#}
+{#                <input type="date">#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+    <hr>
+    <div class="container-fluid">
+        <table class="table table-light table-hover border" style="font-size: 12px; text-align: center ">
+            <thead>
+            <tr style="font-weight: bold; font-size: 16px">
+                <td>Название груза</td>
+                <td>Категория</td>
+                <td>Длина груза, м</td>
+                <td>Ширина груза, м</td>
+                <td>Высота груза, м</td>
+                <td>Масса груза, м</td>
+                <td>Дата получения</td>
+                <td>Адрес получения груза</td>
+                <td>Место доставки груза</td>
+            </tr>
+            </thead>
+            {% for freight in freight_list %}
+                <tr id="freights" style="cursor: pointer" onclick="location.href='{% url "show_freight" freight.freight_id %}'">
+                    <td style="font-size: 12pt">{{ freight.freight_description }}</td>
+                    <td>{{ freight.freight_category }}</td>
+                    <td>{{ freight.freight_length }}</td>
+                    <td>{{ freight.freight_width }}</td>
+                    <td>{{ freight.freight_height }}</td>
+                    <td>{{ freight.freight_weight }}</td>
+                    <td>{{ freight.freight_first_date }}</td>
+                    <td>{{ freight.freight_address_start }}</td>
+                    <td>{{ freight.freight_address_finish }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}

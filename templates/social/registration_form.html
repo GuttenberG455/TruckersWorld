@@ -1,0 +1,111 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Регистрация{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Добро пожаловать на сайт Truckers World</h1>
+        </div>
+    </div>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <table class="table table-light border">
+                <tr>
+                    <td class="border" colspan="2">
+                        <h5 style="padding-left: 10px">Регистрационные данные</h5>
+                    </td>
+                </tr>
+                <tr class="border">
+                    <td class="border w-25">Имя пользователя</td>
+                    <td>
+                        {{ form.username }}
+                    </td>
+                </tr>
+                <tr class="border">
+                    <td class="border w-25">Ваш e-mail:</td>
+                    <td>
+                        {{ form.email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border w-25"><label>Введите пароль:</label></td>
+                    <td>
+                        {{ form.password1 }}
+                        <div class="text" style="font-size: 10pt">Пароль должен содержать от 8 до 20 символов</div>
+                        <div class="text-danger form-text has-feedback" style="display: none" id="password_error1"> Пароль не удовлетворяет условиям</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border w-25">Подтвердите пароль:</td>
+                    <td>
+                        {{ form.password2 }}
+                        <div class="text-danger form-text has-feedback" style="display:none;" id="password_error2">Пароли не совпадают</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border" colspan="2">
+                        <h5 style="padding-left: 10px">Персональная информация</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border">Кто вы?</td>
+                    <td>
+                        {{ form.form_group }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Имя</td>
+                    <td>
+                        {{ form.first_name }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Фамилия</td>
+                    <td>
+                        {{ form.last_name }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border">Ваш пол</td>
+                    <td>
+                        {{ form.form_gender }}
+                    </td>
+                </tr>
+                <tr class="user_tag">
+                    <td class="border w-25">Дата рождения</td>
+                    <td class="border w-50">
+                        {{ form.form_date_of_birth }}
+                    </td>
+                </tr>
+                <tr class="company_tag">
+                    <td class="border w-25">Название компании</td>
+                    <td class="border w-50">
+                        {{ form.form_company_name }}
+                    </td>
+                </tr>
+                <tr id="moderator_tag">
+                    <td class="border w-25">Проверочный код</td>
+                    <td class="border w-50">
+                        {{ form.form_mod_code }}
+                        <div class="text" style="font-size: 10pt">Код должен выдать администратор</div>
+                    </td>
+                </tr>
+                <tr id="phone_tag">
+                    <td class="border w-25"><label>Номер телефона</label></td>
+                    <td class="border w-50">
+                        {{ form.form_phone }}
+                    </td>
+                </tr>
+                <tr id="reg_submit_tag">
+                    <td class="border" colspan="2">
+                        <input type="submit" class="button btn-primary" value="Зарегистрироваться">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+{% endblock content %}

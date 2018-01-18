@@ -1,0 +1,126 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Информация о грузе{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <h3 style="text-align: center">Информация о контракте №{{ freight.freight_id }}</h3>
+    </div>
+    <div class="container">
+        <table class="table table-light border">
+            <tr>
+                <td class="w-25 border">
+                    <p style="font-weight: bold">Название груза</p>
+                </td>
+                <td class="w-75">
+                    <p>{{ freight.freight_description }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Описание груза</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_comment }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Категория груза</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_category }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Длина</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_length }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Ширина</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_width }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Высота</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_height }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Масса груза</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_weight }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Дата получения груза</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_first_date }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight: bold">Крайний срок доставки</p>
+                </td>
+                <td>
+                    <p>{{ freight.freight_latest_date }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight:bold;">Адрес получения груза</p>
+                </td>
+                <td>
+                    <span class="ymaps-geolink">{{ freight.freight_address_start }}</span>
+                    <p style="display:none;" id="freight_address_1" >{{ freight.freight_address_start }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="border">
+                    <p style="font-weight:bold;">Адрес доставки груза</p>
+                </td>
+                <td>
+                    <span class="ymaps-geolink">{{ freight.freight_address_finish }}</span>
+                    <p style="display:none;" id="freight_address_2">{{ freight.freight_address_finish }}</p>
+                </td>
+            </tr>
+            <tr id="freight_info_btn1">
+                <td colspan="2">
+                    <input type="button" class="button btn-primary" value="Показать маршрут" onclick="freight_info_map1()">
+                </td>
+            </tr>
+            <tr id="freight_info_btn2" style="display: none;">
+                <td colspan="2">
+                    <input type="button" class="button btn-primary" value="Скрыть маршрут" onclick="freight_info_map2()">
+                </td>
+            </tr>
+            <tr style="display: none" id="freight_info_map">
+                <td colspan="2">
+                    <div id="map_fullinfo" style="width: inherit; height: 600px"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="button btn-primary" value="Откликнуться на предложение">
+                    <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock content %}

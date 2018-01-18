@@ -1,0 +1,70 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Персональная страница{% endblock title %}
+
+{% block social_content %}
+    <div class="row border" style="margin-left: 5px">
+        <div class="col-6 border">
+            {% if user.user_image %}
+                <img src="{{ user.user_image }}" class="w-100" style="margin-top: 5px; margin-bottom: 5px">
+                <a href="{% url "edit_personal" user.user_id %}" class="btn-link">Редактировать профиль</a>
+            {% else %}
+                <div class="w-100"
+                     style="margin-top: 5px; margin-bottom: 5px; height: 200px; background-color: thistle; text-align: center">
+                    No photo
+                </div>
+                {% if request.user.id == user.user_id %}
+                    <a href="{% url "edit_personal" user.user_id %}" class="btn-link">Редактировать профиль</a>
+                {% endif %}
+            {% endif %}
+
+        </div>
+        <div class="col-6 border">
+            {% if user.user_group_id.pk == 1 %}
+                <p style="font-weight: bold; font-size: 16pt">{{ user.str_user }}</p>
+                <p style="font-size: 14pt">{{ user.user_group_id }}</p>
+            {% elif user.user_group_id.pk == 2 %}
+                <p style="font-weight: bold; font-size: 16pt">{{ user.str_company }}</p>
+                <p style="font-size: 14pt">{{ user.user_group_id }}</p>
+            {% elif user.user_group_id.pk == 3 %}
+                <p style="font-weight: bold; font-size: 16pt">{{ user.str_user }}</p>
+                <p style="font-size: 14pt">{{ user.user_group_id }}</p>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row border" style="margin-left: 5px; margin-top: 2px; margin-right: -15px;">
+        <p class="border w-100" style="padding-top: 5px; padding-bottom: 10px; margin-bottom: 5px">
+            <span style="font-size: 14pt; font-weight: bold; margin-left: 10px"> Лента комментариев</span>
+            {% if request.user.id is not None %}
+                <input type="button" class="button btn-link" value="Добавить комментарий" style="margin-left: 50%"
+                       onclick="location.href='{% url "add_comment" user.user_id %}'">
+            {% endif %}
+        </p>
+        {% for comm in comments %}
+            <div class="row w-100 border" style="margin: 1px;height: 85px; max-height: 85px">
+                <div class="col-2">
+                    {% if comm.commentary_author.user_image %}
+                        <img src="{{ comm.commentary_author.user_image }}" class="w-100"
+                             style="max-height: 70px; margin-top: 5px;">
+                    {% else %}
+                        <div class="w-100"
+                             style="height: 70px; margin-top: 5px; background-color: thistle; text-align: center; vertical-align: middle">
+                            No Image
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-9">
+                    <div class="text-info" style="font-size: 10pt">
+                        {{ comm.commentary_author.str_user }}
+                        {{ comm.commentary_date }}
+                    </div>
+                    <div style="font-size: 9pt">
+                        {{ comm.commentary_text }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock social_content %}
+

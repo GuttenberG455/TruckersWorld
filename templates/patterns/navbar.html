@@ -1,0 +1,28 @@
+<nav class="container-fluid fixed-top" style="padding: 0">
+    <div class="btn-group col-12" style="padding: 0;">
+        <button type="button" class="btn btn-primary col" onclick="location.href='{% url "social_feed" %}' "
+                style="font-size: 18px; padding: 3px; font-weight: bold; font-family: Tahoma">Social
+        </button>
+        <button type="button" class="btn btn-success col" onclick="location.href='{% url "cargo_main" %}' "
+                style="font-size: 18px; padding: 3px; font-weight: bold; font-family: Tahoma">Freights
+        </button>
+        <button type="button" class="btn btn-info col" onclick="location.href='{% url "shop_main" %}' "
+                style="font-size: 18px; padding: 3px; font-weight: bold; font-family: Tahoma">Shop
+        </button>
+        <div class="btn-group col-2" style="padding: 0;">
+            <button type="button" class="btn btn-secondary dropdown-toggle btn-block" data-toggle="dropdown"
+                    style="font-size: 18px; padding: 3px; font-weight: bold; font-family: Tahoma">
+                Menu
+            </button>
+            <div class="dropdown-menu" style="width: inherit;">
+                {% if request.user.id == None %}
+                    <a class="dropdown-item" href="{% url "entrance" %}">Войти</a>
+                {% else %}
+                    <a class="dropdown-item" href="{% url "logout" %}">Выйти</a>
+                {% endif %}
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url "registration_form" %}">Регистрация</a>
+            </div>
+        </div>
+    </div>
+</nav>
