@@ -9,7 +9,7 @@
         </div>
     </div>
     {% for truck in trucks_list %}
-        <div class="container border" style="margin-bottom: 5px; margin-top: 5px;">
+        <div class="container border" style="margin-bottom: 5px; margin-top: 5px;min-height: 225px">
         <div class="row">
             <div class="col-5">
                 <img src="{{ truck.truck_image }}" class="col-4"
@@ -24,6 +24,7 @@
                 <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px">Колесная
                     формула {{ truck.truck_wheel_formula }}</p>
                 <p style="margin-top: 10px; font-size: 15pt">{{ truck.truck_mileage }} км</p>
+                <input type="button" class="button btn-primary w-50" value="Редактировать" onclick="location.href='{% url "edit_truck" truck.truck_id %}'">
             </div>
         </div>
         </div>

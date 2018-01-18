@@ -107,7 +107,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="button" class="button btn-primary" value="Откликнуться на предложение">
+                    <input type="submit" class="button btn-primary" value="Откликнуться на предложение" onclick="location.href='{% url "buy_truck" prod.product_id %}'">
                     <input type="button" class="button btn-info" value="Вернуться назад" onclick="history.back()">
                 </td>
             </tr>

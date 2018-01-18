@@ -1,0 +1,40 @@
+{% extends "patterns/base.html" %}
+
+{% block title %}Товар{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h3 style="text-align: center">Вы действительно хотите купить грузовик №{{ prod.product_id }}</h3>
+    </div>
+    <div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <table class="table table-light border">
+            <tr>
+                <td class="w-25 border">
+                    <p style="font-weight: bold">Название грузовика</p>
+                </td>
+                <td class="w-75">
+                    <p style="font-weight: bold">{{ prod.product_truck }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="w-25 border">
+                    <p style="font-weight: bold">Изображение грузовика</p>
+                </td>
+                <td class="w-75">
+                    <img src="{{ prod.product_truck.truck_image }}" style="width: 60%; max-height: 400px">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="button btn-primary" value="Купить" name="Yes">
+                    <input type="submit" class="button btn-info" value="Вернуться назад" name="No">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+
+
+{% endblock content %}
