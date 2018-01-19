@@ -7,10 +7,23 @@
     {% csrf_token %}
         <table class="table table-light border">
             <tr>
-                <td style="font-weight: bold; font-size: 14pt">Добавление комментария</td>
+                <td style="font-weight: bold; font-size: 14pt" colspan="2">Добавление комментария</td>
             </tr>
             <tr>
+                <td>Текст комментария</td>
                 <td>{{ form.commentary_text }}</td>
+            </tr>
+            <tr>
+                <td>Кто оставляет комментарий</td>
+                <td>{{ form.commentary_author }}</td>
+            </tr>
+            <tr>
+                <td>Кому оставляем комментарий</td>
+                <td>{{ form.commentary_link }}</td>
+            </tr>
+            <tr>
+                <td>Дата комментария</td>
+                <td>{{ form.commentary_date }}</td>
             </tr>
             <tr>
                 <td>

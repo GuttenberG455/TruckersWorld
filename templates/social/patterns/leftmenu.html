@@ -19,8 +19,8 @@
         <button type="button" class="btn btn-light" onclick="location.href='{% url "personal_trucks" request.user.id %}'"
                 style="font-size: 14px; font-family: Tahoma,sans-serif">Грузовики
         </button>
-        <button type="button" class="btn btn-light"
-                style="font-size: 14px; font-family: Tahoma,sans-serif">Контракты
+        <button type="button" class="btn btn-light" onclick="location.href='{% url "show_users" %}'"
+                style="font-size: 14px; font-family: Tahoma,sans-serif">Пользователи
         </button>
         <button type="button" class="btn btn-light" onclick="location.href='{% url "social_feed" %}'"
                 style="font-size: 14px; font-family: Tahoma,sans-serif">Новости

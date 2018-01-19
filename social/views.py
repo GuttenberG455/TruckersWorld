@@ -20,18 +20,15 @@ def media(request):
 
 
 def reg_form(request):
-    print("reg_form")
     if request.method == 'POST':
-        print("postpost")
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            print("savesave")
             form.save()
             return redirect("entrance")
+        else: errorz = form.errors
     else:
-        print("elseelse")
         form = RegistrationForm()
-        return render(request, "social/registration_form.html", locals())
+    return render(request, "social/registration_form.html", locals())
 
 
 def logout(request):
@@ -70,9 +67,7 @@ def authorization(request):
     if request.method == 'POST' and form.is_valid():
         # form.save()
         username = form.cleaned_data.get('username')
-        print(username)
         raw_password = form.cleaned_data.get('password')
-        print(raw_password)
         user = auth.authenticate(username=username, password=raw_password)
         if user and user.is_active:
             auth.login(request, user)
@@ -85,16 +80,16 @@ def add_comment(request, id_user):
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            return redirect("social_feed")
+            return redirect("personal_page", id_user)
+        else:
+            return render(request, "social/addcomment.html", locals())
     return render(request, "social/addcomment.html", locals())
 
 
 def add_video(request):
     form = VideoForm(request.POST or None)
-    form = VideoForm('DATA','DAFA','DADA')
     if request.method == "POST":
         if form.is_valid():
-            # form.video_author.id = request.user.id
             form.save()
             return redirect("video_feed")
     return render(request, "social/addnewvideo.html", locals())
@@ -103,6 +98,11 @@ def add_video(request):
 def show_video(request, id_video):
     video = Video.objects.get(pk=id_video)
     return render(request, "social/show_video.html", locals())
+
+
+def show_users(request):
+    users_list = reversed(UserPersonal.objects.all())
+    return render(request, "social/show_users.html", locals())
 
 
 def edit_personal(request, id_user):
@@ -132,3 +132,17 @@ def add_truck(request):
         else:
             return render(request, "social/add_truck.html", locals())
     return render(request, "social/add_truck.html", locals())
+
+
+def edit_truck(request, id_truck):
+    truck = Truck.objects.get(truck_id=id_truck)
+    form = TruckForm(instance=truck)
+    if request.method == "POST":
+        form = TruckForm(request.POST, instance=truck)
+        if form.is_valid():
+            form.save()
+            return redirect("personal_trucks", request.user.id)
+        else:
+            return render(request, "social/edittruck.html", locals())
+    return render(request, "social/edittruck.html", locals())
+

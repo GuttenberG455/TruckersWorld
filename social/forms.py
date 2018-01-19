@@ -35,10 +35,10 @@ class PostForm(ModelForm):
 
 
 class RegistrationForm(UserCreationForm):
-    # form_gender = ChoiceField(widget=Select, choices=Choices_Gender)
+    form_gender = ChoiceField(widget=Select, choices=Choices_Gender)
     form_group = ChoiceField(widget=Select, choices=Choices_Group)
-    # form_date_of_birth = DateField(widget=SelectDateWidget(years=Years, empty_label=('День', 'Месяц', 'Год')),
-    #                                required=False)
+    form_date_of_birth = DateField(widget=SelectDateWidget(years=Years, empty_label=('День', 'Месяц', 'Год')),
+                                   required=False)
     form_phone = CharField(max_length=15, required=False)
     form_company_name = CharField(max_length=127, required=False)
     form_mod_code = CharField(max_length=6, required=False)
@@ -52,8 +52,8 @@ class RegistrationForm(UserCreationForm):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         group_pers = self.cleaned_data['form_group']
-        # gender_pers = self.cleaned_data['form_gender']
-        # date_of_birth_pers = self.cleaned_data['form_date_of_birth']
+        gender_pers = self.cleaned_data['form_gender']
+        date_of_birth_pers = self.cleaned_data['form_date_of_birth']
         phone_pers = self.cleaned_data['form_phone']
         company_pers = self.cleaned_data['form_company_name']
         mod_code = self.cleaned_data['form_mod_code']
@@ -63,35 +63,34 @@ class RegistrationForm(UserCreationForm):
                     user.save()
                     user_personal = UserPersonal(user_django_id=user.id, user_group_id_id=group_pers,
                                                  user_name=user.first_name,
-                                                 user_surname=user.last_name,
-                                                 user_phone_number=phone_pers,
-                                                 user_company_name=company_pers)
+                                                 user_surname=user.last_name)
+                    # user_phone_number=phone_pers,
+                    # user_company_name=company_pers)
                     user_personal.save()
             else:
                 print("OKAY?")
-                user.save()
-                user_personal = UserPersonal(user_django_id=user.id, user_group_id_id=group_pers,
-                                             user_name=user.first_name,
-                                             user_surname=user.last_name, user_phone_number=phone_pers,
-                                             user_company_name=company_pers)
-                user_personal.save()
-
+            user.save()
+            user_personal = UserPersonal(user_django_id=user.id, user_group_id_id=group_pers,
+                                         user_name=user.first_name,
+                                         user_surname=user.last_name,
+                                         user_phone_number=phone_pers,
+                                         user_company_name=company_pers,
+                                         user_gender=gender_pers,
+                                         user_dateofbirth=date_of_birth_pers)
+            user_personal.save()
         return user
 
 
 class CommentForm(ModelForm):
     class Meta:
         model = Commentary
-        fields = ['commentary_text']
-
-    def save(self, commit=True):
-        print(self.cleaned_data['form_gender'])
+        fields = ('commentary_text', 'commentary_author', 'commentary_link', 'commentary_date')
 
 
 class VideoForm(ModelForm):
     class Meta:
         model = Video
-        fields = ["video_link", "video_name", "video_description"]
+        fields = ["video_link", "video_name", "video_description", "video_author"]
 
 
 class EditPersonalForm(ModelForm):
@@ -106,4 +105,4 @@ class TruckForm(ModelForm):
         model = Truck
         fields = ('truck_brend', 'truck_model', 'truck_release_year', 'truck_type', 'truck_mileage', 'truck_gosnum',
                   'truck_vinnum', 'truck_engine', 'truck_engine_vol', 'truck_engine_power', 'truck_wheel_formula',
-                  'truck_image','truck_owner')
+                  'truck_image', 'truck_owner')

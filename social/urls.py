@@ -11,10 +11,12 @@ urlpatterns = [
     url(r'^addnewpost$', views.add_new_post, name='add_new_post'),
     url(r'^personalpage/(?P<id_user>\d+)$', views.personal_page, name='personal_page'),
     url(r'^personaltrucks/(?P<id_user>\d+)$', views.personal_trucks, name='personal_trucks'),
+    url(r'^showusers/$', views.show_users, name='show_users'),
     url(r'^editpersonal/(?P<id_user>\d+)$', views.edit_personal, name='edit_personal'),
     url(r'^addcomment/(?P<id_user>\d+)$', views.add_comment, name='add_comment'),
     url(r'^addvideo/$', views.add_video, name='add_video'),
     url(r'^addtruck/$', views.add_truck, name='add_truck'),
+    url(r'^edittruck/(?P<id_truck>\d+)$', views.edit_truck, name='edit_truck'),
     url(r'^showvideo/(?P<id_video>\d+)$', views.show_video, name='show_video'),
 
 ]

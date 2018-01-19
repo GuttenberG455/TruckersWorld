@@ -1,0 +1,27 @@
+{% extends "social/patterns/basesocial.html" %}
+
+{% block title %}Список пользователей{% endblock title %}
+
+{% block social_content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                {% for user in users_list %}
+                    <div class="row border" style="max-height: 250px; min-height: 150px; margin-top: 5px; margin-bottom: 5px">
+                        <div class="col-5">
+                            <img src="{{ user.user_image }}" class="col-4"
+                                 style="max-width: 400px; max-height:200px; margin-top: 3px; margin-bottom: 3px;">
+                        </div>
+                        <div class="col-7" style="padding-left: 2px; padding-right: 2px;">
+                            <p style="font-weight:bold; margin-top: 10px; font-size: 14pt; margin-bottom: 3px">{{ user.user_django }}</p>
+                            <p style="margin-top: 10px; font-size: 14pt; margin-bottom: 3px">{{ user.str_user }}</p>
+                            <p style="font-size: 14pt; margin-top: 3px; margin-bottom: 3px"> {{ user.user_dateofbirth }} </p>
+                            <input type="button" class="button btn-primary w-50" value="Узнать больше" onclick="location.href='{% url "personal_page" user.user_id %}'">
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock social_content %}
