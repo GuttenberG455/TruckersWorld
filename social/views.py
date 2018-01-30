@@ -71,7 +71,7 @@ def authorization(request):
         user = auth.authenticate(username=username, password=raw_password)
         if user and user.is_active:
             auth.login(request, user)
-            return redirect("social_feed")
+            return render(request, "social/entrance.html", locals())
     return render(request, "social/entrance.html", locals())
 
 
